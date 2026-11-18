@@ -1148,6 +1148,8 @@ func TestBuildKeyWithDimensionsOverflow(t *testing.T) {
 	for _, log := range observedLogs.All() {
 		if strings.Contains(log.Message, "Too many operations to track, using overflow operation name") {
 			found = true
+			// the field name must match the user-facing config key
+			assert.Equal(t, int64(p.maxNumberOfOperationsToTrackPerService), log.ContextMap()["max_operations_to_track_per_service"])
 		}
 	}
 	assert.True(t, found)

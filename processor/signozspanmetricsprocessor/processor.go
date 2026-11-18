@@ -1266,7 +1266,7 @@ func (p *processorImp) buildKey(dest *bytes.Buffer, serviceName string, span ptr
 	}
 	if len(p.serviceToOperations[serviceName]) > p.maxNumberOfOperationsToTrackPerService {
 		p.logger.Warn("Too many operations to track, using overflow operation name",
-			zap.Int("maxNumberOfOperationsToTrackPerService", p.maxNumberOfOperationsToTrackPerService),
+			zap.Int("max_operations_to_track_per_service", p.maxNumberOfOperationsToTrackPerService),
 			zap.String("serviceName", serviceName))
 		spanName = overflowOperation
 	}
